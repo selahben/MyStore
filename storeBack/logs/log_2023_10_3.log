@@ -1,0 +1,17 @@
+11:37:47 - URL: /users, Status Code: 400, Message: "phone" with value "972501111112" fails to match the required pattern: /^\+?\d{3}\d{7,8}$/
+11:38:23 - URL: /users, Status Code: 400, Message: "phone" with value "972501111112" fails to match the required pattern: /^\+?\d{3}\d{7,8}$/
+11:40:39 - URL: /users, Status Code: 400, Message: User already registered
+11:47:25 - URL: /users, Status Code: 400, Message: User is not authorized to do that operation.
+11:49:46 - URL: /me, Status Code: 404, Message: 404: Page not found.
+11:50:25 - URL: /users/me, Status Code: 400, Message: User is not authorized to do that operation.
+11:50:55 - URL: /users/me, Status Code: 400, Message: User is not authorized to do that operation.
+11:53:40 - URL: /users/me, Status Code: 400, Message: User is not authorized to do that operation.
+11:58:15 - URL: /users/651bc31f5c1b2cffa0aa9c54, Status Code: 400, Message: User is not authorized to do that operation.
+12:01:41 - URL: /user/isAdmin/651bc31f5c1b2cffa0aa9c54, Status Code: 404, Message: 404: Page not found.
+12:01:48 - URL: /users/isAdmin/651bc31f5c1b2cffa0aa9c54, Status Code: 400, Message: User is not authorized to do that operation.
+12:02:08 - URL: /users/isAdmin/651bc31f5c1b2cffa0aa9c54, Status Code: 400, Message: The input must contain 'isAdmin' property and nothing else.
+12:02:22 - URL: /users/isAdmin/651bc31f5c1b2cffa0aa9c54, Status Code: 400, Message: The input must contain 'isAdmin' property and nothing else.
+12:03:42 - URL: /users/651bc31f5c1b2cffa0aa9c54, Status Code: 400, Message: User is not authorized to do that operation.
+13:25:52 - URL: /users/cart, Status Code: 400, Message: The input object must contain 'product_id' and 'amount' properties and nothing else.
+13:26:16 - URL: /users/cart, Status Code: 400, Message: The input object must contain 'product_id' and 'amount' properties and nothing else.
+13:26:31 - URL: /users/cart, Status Code: 400, Message: Failed to update user.

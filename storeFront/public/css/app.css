@@ -1,0 +1,169 @@
+/*General*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Anek Devanagari", sans-serif;
+  transition: all 0.5s ease;
+}
+img {
+  width: 100%;
+}
+
+.innerPageMain {
+  margin: auto;
+  width: 50vw;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 10px 0 10px;
+  box-shadow: 0 0 10px 0 #00000080;
+  height: 60vh;
+  min-height: 400px;
+  margin-top: 10px;
+  justify-content: space-evenly;
+}
+
+.innerPageText {
+  font-weight: 600;
+}
+.innerPageH1 {
+  color: #8dc63f;
+  padding-bottom: 10px;
+  font-size: 50px;
+}
+.innerPageH3,
+.innerPageH5 {
+  color: #fbaa2c;
+  padding-bottom: 10px;
+}
+h3 {
+  font-size: 30px;
+  text-align: center;
+}
+label {
+  display: block;
+  margin-bottom: 0;
+  line-height: 1em;
+  text-align: left;
+  width: 100%;
+}
+input,
+input.form-control,
+select.form-select {
+  display: block;
+  padding: 7px 10px 2px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1em;
+  width: 100%;
+}
+select.form-select {
+  padding: 12px 10px 7px;
+}
+ul {
+  list-style-type: none;
+}
+
+/*Main*/
+/*----*/
+#main {
+  padding: 20px;
+  margin-top: 180px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*Footer*/
+
+/*Alert Box*/
+/* The alert message box */
+#myAlert {
+  padding: 10px 20px 5px;
+  background-color: #f44336;
+  color: white;
+  position: fixed;
+  z-index: 9999;
+  top: 28px;
+  left: 45vw;
+  border-radius: 20px;
+}
+
+/* The close button */
+#closeBTN {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
+  color: black;
+  padding: 7px 8px 0 8px;
+  border-radius: 50%;
+}
+
+#closeBTN:hover {
+  box-shadow: 0 0 10px 0 #00000080;
+}
+.imageSelect {
+  display: none;
+}
+
+#resetPassDiv {
+  width: 30vw;
+  margin: 20px auto;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px 0 #00000080;
+  padding: 20px;
+}
+#resetSubmit {
+  background-color: #8dc63f;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  border: 1px solid #8dc63f;
+  margin-top: 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+#resetSubmit:hover {
+  box-shadow: 0 0 10px 0 #8dc63f;
+  color: white;
+}
+
+/*Toastify*/
+.Toastify__toast {
+  border-radius: 10px !important;
+  box-shadow: 0 0 10px 0 #00000080 !important;
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  color: black !important;
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning button {
+  color: black !important;
+}
+
+/*Mobile*/
+/*------*/
+@media (max-width: 767px) {
+  #main {
+    margin-top: 130px;
+  }
+  .innerPageMain {
+    width: 90vw;
+  }
+  .innerPageH1 {
+    font-size: 2em;
+  }
+  #resetPassDiv {
+    width: 90vw;
+  }
+}

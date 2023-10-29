@@ -1,0 +1,20 @@
+{
+  "mongoDB": {
+    "MONGO_URI": "mongodb://127.0.0.1/myStore"
+  },
+  "server": {
+    "PORT": 3900
+  },
+  "auth": {
+    "JWT_SECRET": "",
+    "GOOGLE_CLIENT_ID": "",
+    "GOOGLE_CLIENT_SECRET": ""
+  },
+  "email": {
+    "EMAIL_SERVICE": "",
+    "EMAIL_USERNAME": "",
+    "EMAIL_PASSWORD": "",
+    "EMAIL_FROM": "",
+    "EMAIL_SENDER": ""
+  }
+}

@@ -1,0 +1,68 @@
+9:06:16 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Can't delete the only admin.
+10:41:10 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+11:03:13 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+11:08:39 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+11:09:43 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+11:10:35 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+11:20:31 - URL: /categories/652d0339a8cb969596b0dac8, Status Code: 400, Message: Main Category can not be deleted.
+11:22:15 - URL: /categories/652d0339a8cb969596b0dac8, Status Code: 400, Message: Main Category can not be deleted.
+11:22:36 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Can't delete the only admin.
+12:14:43 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:15:05 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:15:42 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:15:51 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:17:06 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:22:13 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:22:13 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:24:42 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:24:42 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:25:49 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:25:49 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:28:45 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:28:45 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:28:54 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:28:57 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:30:51 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:30:51 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:31:12 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:31:14 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:31:46 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:31:46 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:33:09 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:33:09 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:33:56 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:33:56 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:34:37 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:34:37 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:35:48 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:35:48 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:36:20 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:36:44 - URL: /users/isAdmin/652d0339a8cb969596b0daf9, Status Code: 400, Message: You can't change your own status..
+12:38:06 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:38:42 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:39:01 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:52:39 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+12:52:59 - URL: /users/isAdmin/652d0339a8cb969596b0daff, Status Code: 400, Message: There must be, at least, one admin.
+14:16:23 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: A User with this email already exists.
+14:28:28 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Failed to update user.
+14:29:35 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Failed to update user.
+14:32:40 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: A User with this email already exists.
+14:59:59 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Can't delete the only admin.
+15:00:27 - URL: /users/652d0339a8cb969596b0daf9, Status Code: 400, Message: Can't delete the only admin.
+15:02:28 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+15:03:11 - URL: /users/65350f32fca92bfb3adde3c3, Status Code: 400, Message: Can't delete the only admin.
+15:09:25 - URL: /users/65350f32fca92bfb3adde3bd, Status Code: 400, Message: Can't delete the only admin.
+15:10:44 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:16:00 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+15:16:12 - URL: /users?sortBy=name&sortOrder=asc, Status Code: 401, Message: Access Denied. No token provided
+15:19:18 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:22:57 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:26:31 - URL: /users/login, Status Code: 400, Message: "password" with value "Aa1234" fails to match the required pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*\d).{6,}$/
+15:26:36 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:32:27 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:32:32 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:32:34 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:32:36 - URL: /users/login, Status Code: 409, Message: Ip ::1 is blocked until 23.10.2023, 15:32:34.
+15:32:57 - URL: /users/login, Status Code: 409, Message: Ip ::1 is blocked until 23.10.2023, 15:32:34.
+15:33:06 - URL: /users/login, Status Code: 401, Message: Invalid email or password
+15:35:14 - URL: /users/653516dcecc80a939f4adc9c, Status Code: 400, Message: Can't delete the only admin.

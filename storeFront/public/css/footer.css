@@ -1,0 +1,64 @@
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #eeeeee;
+  flex-direction: column;
+  box-shadow: 0 0 10px 0 #00000080;
+  padding: 5px 0 5px;
+  text-align: center;
+}
+footer p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+#contactList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#contactList a {
+  color: #8dc63f;
+  border-radius: 50%;
+  background-color: white;
+  display: block;
+  padding: 10px 10px 5px;
+  border: 1px solid #8dc63f;
+  margin: 0 5px;
+  width: 42px;
+  text-align: center;
+}
+#contactList a i {
+  vertical-align: middle;
+  font-size: 20px;
+  line-height: 1em;
+}
+#contactList a:hover {
+  box-shadow: 0 0 10px 0 #8dc63f;
+}
+#footerMenu {
+  border-bottom: 1px solid #00000080;
+}
+#footerMenu .navbar-nav {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+#footerBottom {
+  padding-top: 10px;
+}
+
+/*Mobile*/
+@media (max-width: 767px) {
+  #contactList a {
+    padding: 6px 6px 0px;
+    width: 33px;
+    margin: 2px;
+  }
+  #contactList a i {
+    font-size: 16px;
+  }
+}

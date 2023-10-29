@@ -1,0 +1,166 @@
+#modalOuterFrame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #00000080;
+  /* display: none; */
+  z-index: 999;
+  overflow: scroll;
+  padding: 2vh 0;
+}
+#modalInnerFrame {
+  position: relative;
+  background-color: white;
+  display: block;
+  margin: auto;
+  padding: 20px;
+  width: 30vw;
+  border-radius: 10px;
+}
+#modalQuickInnerFrame {
+  position: relative;
+  background-color: white;
+  display: block;
+  margin: auto;
+  padding: 20px;
+  width: 50vw;
+  top: 5vh;
+  border-radius: 10px;
+}
+
+#closeModalBTN {
+  color: #000000;
+  border-radius: 50%;
+  background-color: white;
+  display: inline-block;
+  padding-top: 3px;
+  padding-left: 1px;
+  border: 1px solid #000000;
+  margin: 0 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: -12px;
+  right: -19px;
+}
+#closeModalBTN i {
+  vertical-align: middle;
+  font-size: 20px;
+  color: black;
+  padding: 0;
+  line-height: 0;
+  border: none;
+}
+#closeModalBTN:hover {
+  box-shadow: 0 0 10px 0 #000000;
+}
+#modalInnerFrame p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+#modalInnerFrame .signSubmit,
+#productSubmit,
+#productDelete,
+#createNewProductBtnP .newProductBTN,
+#editUserSubmit,
+#userDelete,
+#categorySubmit,
+#categoryDelete {
+  background-color: #8dc63f;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  border: 1px solid #8dc63f;
+  margin-top: 0;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+#productDelete,
+#userDelete,
+#categoryDelete {
+  background-color: #ff0000;
+  border: 1px solid #ff0000;
+  margin-top: 5px;
+}
+#modalInnerFrame .signSubmit:hover,
+#productSubmit:hover,
+#createNewProductBtnP .newProductBTN:hover,
+#editUserSubmit:hover,
+#categorySubmit:hover {
+  box-shadow: 0 0 10px 0 #8dc63f;
+  color: white;
+}
+#productDelete:hover,
+#userDelete:hover,
+#categoryDelete:hover {
+  box-shadow: 0 0 10px 0 #ff0000;
+}
+.signUpInChangeP {
+  margin-top: 10px;
+}
+#modalInnerFrame .signUpInChange {
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0 0 0 5px;
+  line-height: 1;
+  vertical-align: baseline;
+}
+.signUpInChange:hover {
+  color: #8dc63f;
+}
+#modalInnerFrame #modalFormError {
+  color: red;
+  text-align: center;
+  padding: 10px;
+  margin: 0;
+}
+#editProductBtnP,
+#deleteProductBtnP,
+#newProductBtnP {
+  display: inline-block;
+  margin: 1%;
+  width: 47%;
+}
+#createProductBtnP,
+#editUserSubmit,
+#userDelete {
+  display: block;
+  margin: 1%;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  #modalInnerFrame {
+    width: 90vw;
+    top: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 10px;
+  }
+
+  #modalQuickInnerFrame {
+    width: 90vw;
+    top: 0;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 0;
+  }
+
+  #productQuickview {
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+
+  #createProductBtnP,
+  #editUserSubmit,
+  #userDelete {
+    margin: 0 0 5px 0;
+  }
+}

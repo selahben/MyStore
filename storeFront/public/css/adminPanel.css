@@ -1,0 +1,59 @@
+#adminTabs {
+  width: 100%;
+}
+#adminTabs .nav-link {
+  color: black;
+}
+#adminTabs .nav-link.active {
+  color: #8dc63f;
+  font-weight: bold;
+}
+#adminTabs table td {
+  vertical-align: middle;
+}
+#productsTableWrapper,
+#categoriesTableWrapper,
+#usersTableWrapper {
+  max-height: 50vh;
+  overflow: auto;
+}
+#productsTable thead,
+#productsTable thead th,
+#categoriesTable thead,
+#categoriesTable thead th,
+#usersTable thead,
+#usersTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #8dc63f;
+}
+#productsTable thead th,
+#categoriesTable thead th,
+#usersTable thead th,
+#productsTable thead th a,
+#categoriesTable thead th a,
+#usersTable thead th a {
+  color: white;
+}
+.pth-sn {
+  min-width: 60px;
+}
+.pth-name {
+  min-width: 85px;
+}
+.pth-price {
+  min-width: 85px;
+}
+.pth-category {
+  min-width: 105px;
+}
+.adminProductImg,
+.adminUserImg {
+  width: 30px;
+}
+.adminProductImg img,
+.adminUserImg img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}

@@ -1,0 +1,3 @@
+13:27:06 - URL: /categories, Status Code: 400, Message: Category validation failed: "className" is required
+13:29:17 - URL: /categories, Status Code: 400, Message: Category validation failed: "className" is required
+14:21:01 - URL: /categories/652d0339a8cb969596b0dac8, Status Code: 400, Message: Main Category can not be deleted.

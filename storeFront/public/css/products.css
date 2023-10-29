@@ -1,0 +1,146 @@
+#products {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+#products .productDiv {
+  width: 23%;
+  margin: 1%;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 0 #000000;
+  padding: 20px;
+  position: relative;
+}
+#products .productImg {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+#products .productPrice {
+  font-weight: 600;
+  font-size: 20px;
+}
+#products .productAmountInput {
+  display: inline-block;
+  width: unset;
+  line-height: 1.2em;
+  letter-spacing: 1px;
+}
+#products .addProduct {
+  background-color: #8dc63f;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  border: 1px solid #8dc63f;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+#products .addProduct:hover {
+  box-shadow: 0 0 10px 0 #8dc63f;
+}
+#products .addProduct:disabled {
+  background-color: #8dc63f80;
+}
+#products .addProduct:disabled:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+#products .productDiv p {
+  margin-top: 15px;
+}
+/*Admin Edit BTNs*/
+#createNewProductDiv,
+#createNewCategoryDiv {
+  text-align: center;
+}
+#createNewProduct,
+#createNewCategory {
+  background-color: #8dc63f;
+  border-radius: 20px;
+  color: white;
+  border: 1px solid #8dc63f;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 10px 5px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+#createNewProduct:hover,
+#createNewCategory:hover {
+  box-shadow: 0 0 10px 0 #8dc63f;
+}
+#createNewProduct i,
+#createNewCategory i {
+  font-size: 14px;
+}
+#products .editBTN {
+  text-decoration: underline;
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  cursor: pointer;
+}
+#products .editBTN:hover {
+  color: #8dc63f;
+}
+
+#products .quickviewBTN {
+  position: absolute;
+  top: 7px;
+  right: 20px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 2px 5px;
+}
+#products .quickviewBTN i {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1em;
+  vertical-align: middle;
+  margin-bottom: -10px;
+}
+
+#products .quickviewBTN:hover {
+  color: #8dc63f;
+  border-color: #8dc63f;
+}
+
+/*Mobile*/
+/*------*/
+@media (max-width: 767px) {
+  #products {
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+  #products .productDiv {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #products .productImg {
+    height: calc(100vw * 50 / 100);
+  }
+  #products .productDiv p {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  #products .productDiv .productPrice {
+    font-size: 18px;
+  }
+  #products .productDiv .productAmount {
+    margin: 10px 0 20px;
+  }
+  #myAlert {
+    top: 40vh;
+    left: 6%;
+    width: 88%;
+    text-align: center;
+  }
+}
