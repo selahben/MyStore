@@ -831,4 +831,8 @@ npm run seed-db
 - The server uses the "nodemailer" library to send emails. To work properly, the library params should be configured in the .env file.
 - The server has a "Forgot Password" functionality. It generates a temporary token (json web token), which is valid for 5 minutes, and sends the user an email with a link to "Reset Password" Page with the token as a param.
 
+## Final Notes:
+
+There is no doubt that this project can be further developed and improved (and maybe it will). If you wish to do so - be my guest 😊
+
 ## ENJOY!!
