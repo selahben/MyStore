@@ -35,7 +35,9 @@ export function ForgotPassForm() {
           setModalFormError("");
           toast.success("Check your mail for the Reset Password Link!");
         } catch (err) {
-          setModalFormError(err.response.data);
+          toast.error(err.response.data);
+          setModalFormType("");
+          setModalFormError("");
         }
       }
     },

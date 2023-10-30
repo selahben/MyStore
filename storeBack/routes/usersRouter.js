@@ -113,23 +113,28 @@ usersRouter.post("/forgot-password", async (req, res) => {
     }
     const token = oldUser.generateAuthToken("5m");
     const link = `http://localhost:3000/MyStore/reset-password/${token}`;
-    console.log(link);
-    myMailer(
+
+    await myMailer(
       email,
       "Reset Password",
       "",
       `<p><a href=${link} target="_blank">Click to Reset MyStore Password</a></p>`
     );
+
     res.send("Success");
   } catch (err) {
-    res.statusMessage = "Forgot Password Error!";
-    res.status(400).send("Forgot Password Error!");
+    res.statusMessage =
+      "Sorry. Forgot Password Functionality doesn't work at the moment..";
+    res
+      .status(400)
+      .send(
+        "Sorry. Forgot Password Functionality doesn't work at the moment.."
+      );
   }
 });
 
 //Reset Password
 usersRouter.post("/reset-password", authMW(), async (req, res) => {
-  console.log(req.body);
   try {
     const newPass = await bcrypt.hash(req.body.password, 12);
     await User.findOneAndUpdate({ _id: req.user._id }, { password: newPass });

@@ -1,14 +1,68 @@
 # MyStore
 
+## Table of Contents
+
+1. [Client Side](#client-side)
+1. [Server Side](#server-side)
+   1. [Description](#server-description)
+   1. [Install](#server-install)
+   1. [Seeding the DB](#seeding-the-db)
+   1. [Routes and Models](#routes-and-models)
+      1. [User](#user)
+         1. [User Routes](#user-routes)
+         1. [User Model/Schema](#user-modelscheme)
+         1. [User Minimum Input (Creation / Editing)](#user-minimum-input)
+      1. [Product](#product)
+         1. [Product Routes](#product-routes)
+         1. [Product Model/Schema](#product-modelscheme)
+         1. [Product Minimum Input (Creation / Editing)](#product-minimum-input)
+      1. [Category](#category)
+         1. [Category Routes](#category-routes)
+         1. [Category Model/Schema](#category-modelscheme)
+         1. [Category Minimum Input (Creation / Editing)](#category-minimum-input)
+   1. [Libraries](#server-libraries)
+   1. [Additional Features](#server-additional-features)
+
+## Client Side
+
+### Client Description
+
+The Client side of an online Store.
+It includes various user, products and categories management features.
+It was built with React (create-react-app).
+
+### Client Install
+
+1. Download the project.
+1. In the client folder (/storeFront) do
+
+```
+npm i
+```
+
+to install all the required libraries.
+
+3. After installing all required libraries you can do:
+
+```
+npm run start
+```
+
+### Client Usage
+
+#### Un-Registered User
+
+![Un-Registered User](https://drive.google.com/file/d/1EFBYwc2tqkoZo42idw_dEtabHQzGDzpK/view?usp=share_link)
+
 ## Server Side
 
-### Description
+### Server Description
 
 The server side for managing an online Store.
 It includes various user, products and categories management features.
 It was built with node.js.
 
-### Install
+### Server Install
 
 1. Download the project.
 1. In the server folder (/storeBack) do
@@ -47,358 +101,578 @@ npm run seed-db
 1. The seeding process empties all collections (products,categories,users) before inserting the data.
 1. The seeded data can be changed in scripts->dbSeederData.
 
-### Usage
+### Routes and Models
 
-#### Routes
+#### User
 
 ##### User Routes
 
-| No. | URL          | METHOD | Authorization                | Action                     | Notice                                 | Return           |
-| --- | ------------ | ------ | ---------------------------- | -------------------------- | -------------------------------------- | ---------------- |
-| 1   | /users       | Post   | all                          | Register user              | unique email                           | The Created User |
-| 2   | /users/login | Post   | all                          | Login                      |                                        | Encrypted token  |
-| 3   | /users/      | Get    | admin                        | Get all users              |                                        | Array of users   |
-| 4   | /users/:id   | Get    | the registered user or admin | Get user by id             |                                        | User             |
-| 5   | /users/:id   | Put    | the registered user          | Edit User                  |                                        | User             |
-| 6   | /users/:id   | Patch  | the registered user          | Change "isBusiness" Status | pass {"isBusiness":true/false} in body | User             |
-| 7   | /users/:id   | Delete | the registered user or admin | Delete User                |                                        | Deleted User     |
-| 8   | /auth        | Get    | all                          | Register/Login with Google | Only through browser                   | encrypted token  |
+- Create New User / Sign Up
 
-##### Card Routes
+  - Route: /users
+  - Method: POST
+  - Body: New User ([See User Model](#user-modelscheme) / [User Minimum Input](#user-minimum-input))
+  - Authorization: All
+  - Return on Success: New User ([See User Model](#user-modelscheme))
+  - Comments: "isAdmin" cannot be entered
 
-| No. | URL               | METHOD | Authorization                               | Action                    | Return         |
-| --- | ----------------- | ------ | ------------------------------------------- | ------------------------- | -------------- |
-| 1   | /cards            | Get    | all                                         | Get all cards             | Array of cards |
-| 2   | /cards/my-cards   | Get    | The registered business user                | Get user cards            | Array of cards |
-| 3   | /cards/:id        | Get    | all                                         | Get card by id            | Card           |
-| 4   | /cards            | Post   | The registered business user                | Create new card           | Card           |
-| 5   | /cards/:id        | Put    | The registered business user                | Edit card (by id)         | Card           |
-| 6   | /cards/:id        | Patch  | registered user                             | Like a Card               | Card           |
-| 7   | /cards/:id        | Delete | business user who created the card or admin | Delete Card               | Deleted Card   |
-| 8   | /cards/bizNum/:id | Patch  | admin                                       | ReGenerate card bizNumber | Card           |
+- Login / Sign In
 
-#### Models
+  - Route: /users/login
+  - Method: POST
+  - Body:
+    ```
+    {
+      "email":"{valid email}",
+      "password:"{valid password}"
+    }
+    ```
+  - Authorization: All
+  - Return on Success: json web token
+  - Comments: valid password must contain, at least, 1 uppercase letter, 1 lowercase letter, 4 digits, 1 special character (!@#$%^&), and be, at least, 8 characters long. "createdAt" and "updatedAt" are created automatically.
+
+- Forgot Password
+
+  - Route: /users/forgot-password
+  - Method: POST
+  - Body:
+    ```
+    {
+      "email":"{valid existing email}",
+    }
+    ```
+  - Authorization: All
+  - Return on Success: Send an email to the user with a link to "Reset Password" page with a temporary token.
+  - Comments: Email Service MUST BE CONFIGURED!
+
+- Reset Password
+
+  - Route: /users/reset-password
+  - Method: POST
+  - Required Headers:
+    ```
+    "x-auth-token":"{temporary json web token received from previous step}"
+    ```
+  - Body:
+    ```
+    {
+      "password":"{valid password}",
+    }
+    ```
+  - Authorization: Registered User
+  - Return on Success: "Success".
+  - Comments: valid password must contain, at least, 1 uppercase letter, 1 lowercase letter, 4 digits, 1 special character (!@#$%^&), and be, at least, 8 characters long.
+
+- Get Users
+
+  - Route: /users[?sortBy=(name/email/phone/state/country/city)&sortOrder=(asc/desc)]
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Array of Users.
+  - Comments: If no params are passed, users will be sorted by name in ascending order.
+
+- Get Logged-In User / Me
+
+  - Route: /users/me
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Current User
+  - Return on Success: The User ([See User Model](#user-modelscheme)).
+
+- Get Logged-In User Cart
+
+  - Route: /users/cart
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Current User
+  - Return on Success: User Cart ([See User Model](#user-modelscheme) for cart structure).
+
+- Get User by Id
+
+  - Route: /users/:{id}
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: User ([See User Model](#user-modelscheme)).
+
+- Upload User Avatar
+
+  - Route: /users/upload/:{id}
+  - Method: PUT
+  - Body:
+    ```
+    {
+      "avatar":{file/image object},
+    }
+    ```
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}",
+    "Content-Type":"multipart/form-data"
+    ```
+  - Authorization: Current User / Admin
+  - Return on Success: User ([See User Model](#user-modelscheme)).
+
+- Edit User
+
+  - Route: /users/:{id}
+  - Method: PUT
+  - Body: User ([See User Model](#user-modelscheme) / [User Minimum Input](#user-minimum-input))
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Current User / Admin
+  - Return on Success: User ([See User Model](#user-modelscheme))
+  - Comments: "isAdmin" cannot be entered
+
+- Change Admin Status ("isAdmin" field)
+
+  - Route: /users/isAdmin/:{id}
+  - Method: PATCH
+  - Body:
+    ```
+    {
+      "isAdmin":true/false,
+    }
+    ```
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: User ([See User Model](#user-modelscheme))
+  - Comments: User cannot change his own status ; There must be, at least, 1 admin.
+
+- Delete User
+
+  - Route: /users/:{id}
+  - Method: DELETE
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Current User / Admin
+  - Return on Success: Deleted User ([See User Model](#user-modelscheme))
+  - Comments: An only admin will not be deleted.
+
+- Update Cart (Add/Edit/Delete)
+
+  - Route: /users/cart
+  - Method: PATCH
+  - Body:
+    ```
+    {
+      "product_id":"{valid product id}",
+      "amount":{some number}
+    }
+    ```
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Current User
+  - Return on Success: User ([See User Model](#user-modelscheme))
+  - Comments: "amount"<=0 will cause the product to be deleted from the cart.
 
 ##### User Model/Scheme
 
 ```
 {
     name: {
-        first: {
-            type: String,
-            required: true,
-            minlength: 2,
-            maxlength: 255,
-        },
-        middle: {
-            type: String,
-            minlength: 0,
-            maxlength: 255,
-            default: "",
-        },
-        last: {
-            type: String,
-            required: true,
-            minlength: 2,
-            maxlength: 255,
-        },
-        _id: {
-        type: mongoose.Types.ObjectId,
-        default: new mongoose.Types.ObjectId(),
-        },
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
     },
     phone: {
-        type: String,
-        required: true,
-        minlength: 9,
-        maxlength: 10,
+      type: String,
+      minlength: 10,
+      maxlength: 12,
     },
     email: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 255,
-        unique: true,
+      type: String,
+      required: true,
+      minlength: 6,
+      maxlength: 255,
+      unique: true,
     },
     password: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 1024,
+      type: String,
+      minlength: 8,
+      maxlength: 1024,
     },
     image: {
-        url: {
-            type: String,
-            default:
-                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-            minlength: 11,
-            maxlength: 1024,
-        },
-        alt: {
-            type: String,
-            minlength: 6,
-            maxlength: 255,
-            default: "User Image",
-        },
-        _id: {
-            type: mongoose.Types.ObjectId,
-            default: new mongoose.Types.ObjectId(),
-        },
-    },
-    address: {
-        state: {
-            type: String,
-            minlength: 0,
-            maxlength: 255,
-            default: "",
-        },
-        country: {
-            type: String,
-            minlength: 3,
-            maxlength: 255,
-            required: true,
-        },
-        city: {
-            type: String,
-            minlength: 6,
-            maxlength: 255,
-            required: true,
-        },
-        street: {
-            type: String,
-            minlength: 3,
-            maxlength: 255,
-            required: true,
-        },
-        houseNumber: {
-            type: String,
-            minlength: 1,
-            maxlength: 10,
-            required: true,
-        },
-        zip: {
-            type: String,
-            minlength: 0,
-            maxlength: 12,
-            default: "",
-        },
-        _id: {
-            type: mongoose.Types.ObjectId,
-            default: new mongoose.Types.ObjectId(),
-        },
-    },
-    isBusiness: {
-        type: Boolean,
-        required: true,
-    },
-    isAdmin: {
-        type: Boolean,
-        default: false,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-}
-```
-
-##### Minimum Input
-
-```
-{
-    "name":{
-        "first":"John",
-        "last":"Doe"
-    },
-    "phone":"0505555555",
-    "email":"john@doe.net",
-    "password":"123456",
-    "isBusiness":true,
-    "address":{
-        "state":"New York",
-        "country":"USA",
-        "city":"New York",
-        "street":"main",
-        "houseNumber":"30"
-    }
-}
-```
-
-1. "isAdmin" cannot be entered. It gets a default false, which can only be changed manually.
-1. The password will not be saved in the DB, but encrypted with "bcrypt".
-1. Various "\_id" properties are determined automatically.
-
-##### Card Model/Scheme
-
-```
-{
-    title: {
+      url: {
         type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 255,
-    },
-    subtitle: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 255,
-    },
-    description: {
-        type: String,
-        required: true,
-        minlength: 2,
-        maxlength: 1024,
-    },
-    phone: {
-        type: String,
-        required: true,
-        minlength: 9,
-        maxlength: 10,
-    },
-    email: {
-        type: String,
-        required: true,
-        minlength: 6,
-        maxlength: 255,
-    },
-    web: {
-        type: String,
-        required: true,
+        default:
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
         minlength: 11,
         maxlength: 1024,
+      },
+      alt: {
+        type: String,
+        minlength: 6,
+        maxlength: 255,
+        default: "User Image",
+      },
     },
-    image: {
-        url: {
-            type: String,
-            default:
-                "https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_1280.jpg",
-            minlength: 11,
-            maxlength: 1024,
-        },
-        alt: {
-            type: String,
-            minlength: 6,
-            maxlength: 255,
-            default: "Business Image",
-        },
-        _id: {
-            type: mongoose.Types.ObjectId,
-            default: new mongoose.Types.ObjectId(),
-        },
+    imageFile: {
+      type: String,
     },
     address: {
-        state: {
-            type: String,
-            minlength: 0,
-            maxlength: 255,
-            default: "",
-        },
-        country: {
-            type: String,
-            minlength: 3,
-            maxlength: 255,
-            required: true,
-        },
-        city: {
-            type: String,
-            minlength: 6,
-            maxlength: 255,
-            required: true,
-        },
-        street: {
-            type: String,
-            minlength: 3,
-            maxlength: 255,
-            required: true,
-        },
-        houseNumber: {
-            type: String,
-            minlength: 1,
-            maxlength: 10,
-            required: true,
-        },
-        zip: {
-            type: String,
-            minlength: 0,
-            maxlength: 12,
-            default: "",
-        },
-
-        _id: {
-            type: mongoose.Types.ObjectId,
-            default: new mongoose.Types.ObjectId(),
-        },
-    },
-    bizNumber: {
+      state: {
         type: String,
-        required: true,
-        minlength: 3,
-        maxlength: 999_999_999,
-        unique: true,
+        minlength: 0,
+        maxlength: 255,
+        default: "",
+      },
+      country: {
+        type: String,
+        minlength: 0,
+        maxlength: 255,
+        default: "",
+      },
+      city: {
+        type: String,
+        minlength: 0,
+        maxlength: 255,
+        default: "",
+      },
+      street: {
+        type: String,
+        minlength: 0,
+        maxlength: 255,
+        default: "",
+      },
+      houseNumber: {
+        type: String,
+        minlength: 0,
+        maxlength: 10,
+        default: "",
+      },
+      zip: {
+        type: String,
+        minlength: 0,
+        maxlength: 12,
+        default: "",
+      },
     },
-    likes: [
-        {
-            user_id: {
-                type: mongoose.Schema.Types.ObjectId, ref: "User"
-            },
-            createdAt: {
-                type: Date,
-                default: Date.now,
-            },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    cart: [
+      {
+        product: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product",
         },
+        amount: {
+          type: Number,
+          min: 0,
+        },
+      },
     ],
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-}
+  }
 ```
 
-##### Minimum Input
+##### User Minimum Input
 
 ```
 {
-    "title":"My Card Title",
-    "subtitle":"My Card subtitle",
-    "description":"My Card description",
-    "phone":"0505555555",
-    "email":"card1@cards.net",
-    "web":"https://business.web",
-    "address":{
-        "state":"New York",
-        "country":"USA",
-        "city":"New York",
-        "street":"Main",
-        "houseNumber":"30"
-    }
+    "name":"John Doe",
+    "email":"john@doe.net",
+    "password":"123456",
 }
 ```
 
-1. "user_id" is entered automatically and references the user who created the card.
-1. "bizNumber is created randomly and automatically. It is unique.
-1. Various "\_id" properties are determined automatically.
+- "isAdmin" cannot be entered. It gets a default false, which can only be changed by the Admin.
+- Valid "password" must contain, at least, 1 uppercase letter, 1 lowercase letter, 4 digits, 1 special character (!@#$%^&), and be, at least, 8 characters long.
+- The password will not be saved in the DB, but encrypted with "bcrypt".
+- Valid "phone" must be between 10 and 12 digits long, and may contain "+" at the start.
+- Various "\_id" properties are determined automatically.
 
-### Libraries
+#### Product
 
-1. "node.js" : main platform
-2. "express" : managing routes and requests.
-3. "mongoose" : connecting to and managing MongoDB database.
-4. "joi" : validation.
-5. "bcrypt" : password encryption
-6. "dotenv" : injecting environment variables.
-7. "config" : various configuration variables (including environment variables);
-8. "jsonwebtoken" : creating user token.
-9. "cors" : for handling cors.
-10. "chalk" : adding color to your console.
-11. "morgan" : logging requests to the console.
-12. "lodash" : for easy functionality.
-13. "on-finished" : used for logging functionality.
-14. "nodemailer" : for managing emails.
-15. "express-rate-limit" : limiting requests.
-16. "multer" : handling files uploads.
+##### Product Routes
 
-### Additional Features
+- Get Products
 
-1. Static files are located in the "public" folder, and are served if no previous route was found.
-1. The server has a logger feature, which saves request errors (status 400 and above), to dated files located in the "logs" folder.
-1. The server implements a login blocker, which limits failed tries to 3, and then blocks the IP for 24 hours. The list of blocked IPs is stored locally in the "logInMW.js" middleware.
+  - Route: /products[?sortBy=(sn/name/price/cat)&sortOrder=(asc/desc)&search=(string of words separated by spaces)]
+  - Method: GET
+  - Authorization: All
+  - Return on Success: Array of Products.
+  - Comments: If no params are passed, products will be sorted by name in ascending order. The search is done on the "tags" field. "sort" and "search" are not done together.
+
+- Get Product by Id
+
+  - Route: /products/:{id}
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Registered User / Admin
+  - Return on Success: Product ([See Product Model](#product-modelscheme)).
+
+- Create New Product
+
+  - Route: /products
+  - Method: POST
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Body: Product ([See Product Model](#product-modelscheme) / [Product Minimum Input](#product-minimum-input))
+  - Authorization: Admin
+  - Return on Success: New Product ([See Product Model](#product-modelscheme))
+  - Comments: "createdAt" and "updatedAt" are created automatically.
+
+- Edit Product
+
+  - Route: /products/:{id}
+  - Method: PUT
+  - Body: Product ([See Product Model](#product-modelscheme) / [Product Minimum Input](#product-minimum-input))
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Product ([See Product Model](#product-modelscheme))
+
+- Delete Product
+
+  - Route: /products/:{id}
+  - Method: DELETE
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Deleted Product ([See Product Model](#product-modelscheme))
+
+##### Product Model/Scheme
+
+```
+{
+    name: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
+    },
+    description: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 1024,
+    },
+    price: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    unit: {
+      type: String,
+      required: true,
+      enum: ["KG", "Units"],
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Category",
+    },
+    image: {
+      url: {
+        type: String,
+        default:
+          "https://cdn.pixabay.com/photo/2016/03/23/19/38/shopping-carts-1275480_1280.jpg",
+        minlength: 11,
+        maxlength: 1024,
+      },
+      alt: {
+        type: String,
+        minlength: 2,
+        maxlength: 255,
+        default: "shopping carts",
+      },
+    },
+    sn: {
+      type: String,
+      required: true,
+      minlength: 3,
+      maxlength: 999_999_999,
+      unique: true,
+    },
+    nutritionVals: {
+      type: String,
+      minlength: 0,
+      maxlength: 1024,
+      default: "",
+    },
+    ingredients: {
+      type: String,
+      minlength: 0,
+      maxlength: 1024,
+      default: "",
+    },
+    tags: {
+      type: String,
+      default: "",
+    },
+  }
+```
+
+##### Product Minimum Input
+
+```
+{
+    "sn": "{unique string}",
+    "name": "{string of words and spaces}",
+    "description": "{string}",
+    "price": {number},
+    "unit": "{KG/Units}",
+    "category": "{title of existing category}",
+    "tags": "{string of words. may contain spaces and commas}"
+}
+```
+
+#### Category
+
+##### Category Routes
+
+- Get Categories
+
+  - Route: /categories[?sortBy=(title/className)&sortOrder=(asc/desc)]
+  - Method: GET
+  - Authorization: All
+  - Return on Success: Array of Categories.
+  - Comments: If no params are passed, categories will be sorted by title in ascending order.
+
+- Get Category by Id
+
+  - Route: /categories/:{id}
+  - Method: GET
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Category ([See Category Model](#category-modelscheme)).
+
+- Create New Category
+
+  - Route: /categories
+  - Method: POST
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Body: Category ([See Category Model](#category-modelscheme) / [Category Minimum Input](#category-minimum-input))
+  - Authorization: Admin
+  - Return on Success: New Category ([See Category Model](#category-modelscheme))
+  - Comments: "createdAt" and "updatedAt" are created automatically. "main" cannot be entered.
+
+- Edit Category
+
+  - Route: /categories/:{id}
+  - Method: PUT
+  - Body: Category ([See Category Model](#category-modelscheme) / [Category Minimum Input](#category-minimum-input))
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Category ([See Category Model](#category-modelscheme))
+
+- Delete Category
+
+  - Route: /categories/:{id}
+  - Method: DELETE
+  - Required Headers:
+    ```
+    "x-auth-token":"{json web token}"
+    ```
+  - Authorization: Admin
+  - Return on Success: Deleted Category ([See Category Model](#category-modelscheme))
+  - Comments: "main" Category cannot be deleted, only edited.
+
+##### Category Model/Scheme
+
+```
+{
+  className: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 255,
+    unique: true,
+  },
+  title: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 1024,
+    unique: true,
+  },
+  main: {
+    type: Boolean,
+    default: false,
+  },
+}
+```
+
+##### Category Minimum Input
+
+```
+{
+    "title": "{unique string. May contain spaces}",
+    "className": "{unique string. May NOT contain spaces}"
+}
+```
+
+- "main" category is determined on seeding and can only be edited.
+- There can be only 1 "main" Category.
+
+### Server Libraries
+
+- "bcrypt" : password encryption
+- "chalk" : adding color to your console.
+- "config" : various configuration variables (including environment variables);
+- "cors" : for handling cors.
+- "dotenv" : injecting environment variables.
+- "express" : managing routes and requests.
+- "express-rate-limit" : limiting requests.
+- "joi" : validation.
+- "jsonwebtoken" : creating user token.
+- "lodash" : for easy functionality.
+- "mongoose" : connecting to and managing MongoDB database.
+- "morgan" : logging requests to the console.
+- "multer" : handling files uploads.
+- "nodemailer" : for managing emails.
+- "on-finished" : used for logging functionality.
+
+### Server Additional Features
+
+- Static files are located in the "public" folder, and are served if no previous route was found.
+- Images are saved in "public/uploads.
+- The server has a logger feature, which saves request errors (status 400 and above), to dated files located in the "logs" folder.
+- The server implements a login blocker, which limits failed tries to 3, and then blocks the IP for 24 hours. The list of blocked IPs is stored locally in the "logInMW.js" middleware.
+- The server limits requests to 1000/24 Hours. These configurations can be found in the "limiterMW" middleware.
+- The server uses the "nodemailer" library to send emails. To work properly, the library params should be configured in the .env file.
 
 ## ENJOY!!

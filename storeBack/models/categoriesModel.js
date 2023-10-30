@@ -1,26 +1,29 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 
-const categoriesSchema = new mongoose.Schema({
-  className: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 255,
-    unique: true,
+const categoriesSchema = new mongoose.Schema(
+  {
+    className: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 255,
+      unique: true,
+    },
+    title: {
+      type: String,
+      required: true,
+      minlength: 2,
+      maxlength: 1024,
+      unique: true,
+    },
+    main: {
+      type: Boolean,
+      default: false,
+    },
   },
-  title: {
-    type: String,
-    required: true,
-    minlength: 2,
-    maxlength: 1024,
-    unique: true,
-  },
-  main: {
-    type: Boolean,
-    default: false,
-  },
-});
+  { timestamps: true }
+);
 
 const Category = mongoose.model("Category", categoriesSchema, "categories");
 
