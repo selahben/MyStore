@@ -3,6 +3,22 @@
 ## Table of Contents
 
 1. [Client Side](#client-side)
+   1. [Description](#client-description)
+   1. [Install](#client-install)
+   1. [Client Roles and Abilities](#client-roles-and-abilities)
+      1. [Un-Registered User](#un-registered-user)
+      1. [Registered User](#registered-user)
+      1. [Admin](#admin)
+   1. [Components](#components)
+      1. [General Components](#general-components)
+      1. [Product Components](#product-components)
+      1. [Common Components](#common-components)
+      1. [Forms Components](#forms-components)
+      1. [Admin Components](#admin-components)
+      1. [Other Components](#other-components)
+   1. [Client General Information](#client-general-information)
+   1. [Client Additional Functionality](#client-additional-functionality)
+   1. [Client Libraries](#client-libraries)
 1. [Server Side](#server-side)
    1. [Description](#server-description)
    1. [Install](#server-install)
@@ -30,6 +46,7 @@
 The Client side of an online Store.
 It includes various user, products and categories management features.
 It was built with React (create-react-app).
+It uses Bootstrap and Bootstrap icons for general structure and basic responsiveness.
 
 ### Client Install
 
@@ -48,11 +65,147 @@ to install all the required libraries.
 npm run start
 ```
 
-### Client Usage
+### Client Roles and Abilities
 
 #### Un-Registered User
 
-![Un-Registered User](https://drive.google.com/file/d/1EFBYwc2tqkoZo42idw_dEtabHQzGDzpK/view?usp=share_link)
+![Un-Registered User](https://drive.google.com/uc?export=view&id=1EFBYwc2tqkoZo42idw_dEtabHQzGDzpK)
+
+Un-Registered Users Can:
+
+- View the products, sort them and search.
+- Sign in.
+- Sign up.
+- Use "Forgot Password" (from the sign in).
+
+#### Registered User
+
+![Registered User](https://drive.google.com/uc?export=view&id=1-mqbHnqNaMPp5k8xdxS_Pm0GvJjFk9gx)
+
+Registered Users Can:
+
+- View the products, sort them and search.
+- Add/Remove/Edit their cart.
+- Sign out (from the user menu).
+- Edit their profile (from the user menu).
+
+#### Admin
+
+![Admin Main](https://drive.google.com/uc?export=view&id=1gbhl9mXEfXJgSOfDElEEYU5ZcB9IqO6Q)
+![Admin Panel](https://drive.google.com/uc?export=view&id=1jVr1i32ANCswY4e6X_NROalNKFCbFNf7)
+
+Admins Can:
+
+- View the products, sort them and search.
+- Add/Remove/Edit their cart.
+- Sign out (from the user menu).
+- Edit their profile (from the user menu).
+- Add/Edit/Delete products (main/products page).
+- Get access to the admin panel (from the user menu), where they can:
+  - Sort Users by various terms (users tag).
+  - Edit/Delete users (users tag).
+  - Switch a users status between Admin and Registered User (users tag).
+  - Sort the products by various terms (products tag).
+  - Add/Edit/Delete products (products tag).
+  - Sort the categories by various terms (categories tag).
+  - Add/Edit/Delete categories (categories tag).
+
+### Components
+
+#### General Components
+
+General Components are located in "components/general and consist of:
+
+- about: about page.
+- adminPanel: admin panel page.
+- alternativeMenu: the menu which is shown in all pages except for the main page.
+- footer: the footer.
+- header: the header.
+- mainMenu: the menu of the main page.
+- signIn: sign in button.
+- signUp: sign up button.
+- signOut: sign out button.
+- socialLinks: social links.
+
+#### Product Components
+
+General Components are located in "components/products and consist of:
+
+- cart: the cart.
+- cartProduct: single product in cart.
+- main: main section in home page.
+- product: single product in the main/products view.
+- productQuickview: single product quick view.
+- products: all products.
+
+#### Common Components
+
+Common Components are located in "components/common" and consist of:
+
+- fileInput: user avatar image upload.
+- imageSearch: product image search from pixabay.
+- input: text input.
+- modal: modal component used to show forms and product quick view.
+- protectedRoute: used to protect Admin routes.
+- select: select input.
+
+#### Forms Components
+
+- Forms Components are located in "components/forms", and are delivered through the modal components (except for the "reset-password" form).
+- All Forms are built with Formik, and validated using Joi.
+
+#### Admin Components
+
+Admin Components are located in "components/admin" and consist of:
+
+- categoriesTable: categories table.
+- categoriesTableColTitle: categories table titles row.
+- categoriesTableRow: categories table info row.
+- productsTable: products table.
+- productsTableColTitle: products table titles row.
+- productsTableRow: products table info row.
+- usersTable: users table.
+- usersTableColTitle: users table titles row.
+- usersTableRow: users table info row.
+
+#### Other Components
+
+Located in the "components" and consist of:
+
+- appLogout: an envelope component which deals with auto logout due to inactivity.
+- mainAlerts: deals with general errors.
+- store: the main component.
+
+### Client General Information
+
+- Most functions share states and are calling each other, and therefor they are located in the context component (components/context/store.context.jsx).
+- Http services (general, users, products, cart, categories) functions are located in the "services" folder.
+- Css files are located in "public/css".
+
+### Client Additional Functionality
+
+- Forgot Password:
+  - Located in the "sign in" modal/popup.
+  - Sending email with a link to reset password (see server additional functionality for more info).
+- User is signed out automatically after 4 hours of inactivity.
+
+### Client Libraries
+
+- "@babel/plugin-proposal-private-property-in-object": react library,
+- "@testing-library/jest-dom": react library,
+- "@testing-library/react": react library,
+- "@testing-library/user-event": react library,
+- "axios": http requests,
+- "bootstrap": general structure,
+- "bootstrap-icons": icons,
+- "formik": forms,
+- "joi": validation,
+- "react": main library,
+- "react-dom": react library,
+- "react-router-dom": routing,
+- "react-scripts": react library,
+- "react-toastify": alert messages,
+- "web-vitals": react library
 
 ## Server Side
 
@@ -89,6 +242,8 @@ npm run start
 ```
 
 for production.
+
+- IMPORTANT! mongoDB is used as the database. You MUST installed it locally or have an Atlas DB account.
 
 ### Seeding the DB
 
@@ -669,10 +824,11 @@ npm run seed-db
 ### Server Additional Features
 
 - Static files are located in the "public" folder, and are served if no previous route was found.
-- Images are saved in "public/uploads.
+- Images are saved in "public/uploads".
 - The server has a logger feature, which saves request errors (status 400 and above), to dated files located in the "logs" folder.
 - The server implements a login blocker, which limits failed tries to 3, and then blocks the IP for 24 hours. The list of blocked IPs is stored locally in the "logInMW.js" middleware.
 - The server limits requests to 1000/24 Hours. These configurations can be found in the "limiterMW" middleware.
 - The server uses the "nodemailer" library to send emails. To work properly, the library params should be configured in the .env file.
+- The server has a "Forgot Password" functionality. It generates a temporary token (json web token), which is valid for 5 minutes, and sends the user an email with a link to "Reset Password" Page with the token as a param.
 
 ## ENJOY!!
