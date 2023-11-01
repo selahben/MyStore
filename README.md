@@ -1,7 +1,12 @@
 # MyStore
 
+A very good start to a fully functional e-commerce store.
+It uses React.js for developing the Frontend, and Node.js for developing the Backend.
+It uses MongoDB as a database.
+
 ## Table of Contents
 
+1. [Essential steps and requirements](#essential-steps-for-successfully-running-the-project)
 1. [Client Side](#client-side)
    1. [Description](#client-description)
    1. [Install](#client-install)
@@ -38,6 +43,15 @@
          1. [Category Minimum Input (Creation / Editing)](#category-minimum-input)
    1. [Libraries](#server-libraries)
    1. [Additional Features](#server-additional-features)
+
+## Essential Steps for successfully running the project
+
+- Installing node.js version 18.16.1 globally (for determining installation and version, you can run "node -v" in the console)
+- Installing MongoDB
+- Downloading both "frontStore" and "backStore" folders.
+- Installing all the necessary libraries (see the "Install" sub-section in both client and server sections).
+- Creating the .env file according to the .env.example file.
+- Running the seeder on the back-end. (see [Seeding the DB](#seeding-the-db) for further information).
 
 ## Client Side
 
@@ -253,6 +267,7 @@ For seeding the DB with 11 products, 5 categories and 2 users (regular,admin) an
 npm run seed-db
 ```
 
+1. The seeding process is HIGHLY RECOMMENDED! Without it there will be no categories and no Admin user.
 1. The seeding process empties all collections (products,categories,users) before inserting the data.
 1. The seeded data can be changed in scripts->dbSeederData.
 

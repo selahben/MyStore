@@ -6,9 +6,7 @@
     "PORT": 3900
   },
   "auth": {
-    "JWT_SECRET": "",
-    "GOOGLE_CLIENT_ID": "",
-    "GOOGLE_CLIENT_SECRET": ""
+    "JWT_SECRET": "123456"
   },
   "email": {
     "EMAIL_SERVICE": "",
