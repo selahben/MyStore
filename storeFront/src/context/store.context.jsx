@@ -213,7 +213,7 @@ export function StoreProvider({ children }) {
         isAdmin: fetchedUser.isAdmin,
       });
     } catch (err) {
-      toast.error(err.response.data);
+      toast.error(err.response?.data || err);
       handleSignOut();
       setSignedIn({});
       return;
