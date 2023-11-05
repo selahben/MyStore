@@ -1,7 +1,0 @@
-10:57:32 - URL: /products?sortBy=name&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-11:01:24 - URL: /products?sortBy=name&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-11:03:06 - URL: /products?sortBy=name&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-14:18:18 - URL: /products?cat=FruitsAndVegetablessortBy=price&sortOrder=desc, Status Code: 400, Message: Error! Category was not found.
-14:18:37 - URL: /products?cat=DairysortBy=price&sortOrder=desc, Status Code: 400, Message: Error! Category was not found.
-14:18:47 - URL: /products?cat=BakerysortBy=price&sortOrder=desc, Status Code: 400, Message: Error! Category was not found.
-14:20:47 - URL: /products?cat=FruitsAndVegetablessortBy=name&sortOrder=asc, Status Code: 400, Message: Error! Category was not found.

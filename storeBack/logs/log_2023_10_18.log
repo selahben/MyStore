@@ -1,6 +1,0 @@
-10:33:15 - URL: /products?sortBy=category&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-10:33:27 - URL: /products?sortBy=category&sortOrder=desc, Status Code: 400, Message: Error! Can't retrieve products.
-10:33:28 - URL: /products?sortBy=category&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-10:33:28 - URL: /products?sortBy=category&sortOrder=desc, Status Code: 400, Message: Error! Can't retrieve products.
-10:33:29 - URL: /products?sortBy=category&sortOrder=asc, Status Code: 400, Message: Error! Can't retrieve products.
-10:33:29 - URL: /products?sortBy=category&sortOrder=desc, Status Code: 400, Message: Error! Can't retrieve products.
