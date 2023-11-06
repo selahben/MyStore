@@ -48,7 +48,7 @@ It uses MongoDB as a database.
 
 - Installing node.js version 18.16.1 globally (for determining installation and version, you can run "node -v" in the console)
 - Installing MongoDB
-- Downloading both "frontStore" and "backStore" folders.
+- Downloading both "storeFront" and "storeBack" folders.
 - Installing all the necessary libraries (see the "Install" sub-section in both client and server sections).
 - Creating the .env file according to the .env.example file.
 - Running the seeder on the back-end. (see [Seeding the DB](#seeding-the-db) for further information).
