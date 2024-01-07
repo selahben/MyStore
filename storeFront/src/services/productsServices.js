@@ -25,6 +25,8 @@ export async function addProduct(newProduct, token_header) {
         },
         "category": newProduct.productCategory,
         "tags": newProduct.productTags,
+        "nutritionVals": newProduct.productVals,
+        "ingredients": newProduct.productIngredients,
       },
       token_header
     )
@@ -49,6 +51,8 @@ export async function editProduct(productId, editedProduct, token_header) {
         },
         "category": editedProduct.productCategory,
         "tags": editedProduct.productTags,
+        "nutritionVals": editedProduct.productVals,
+        "ingredients": editedProduct.productIngredients,
       },
       token_header
     )

@@ -119,6 +119,7 @@ productsRouter.post("/", authMW("isAdmin"), async (req, res) => {
 
 //Edit Product
 productsRouter.put("/:id", authMW("isAdmin"), async (req, res) => {
+  console.log(req.body);
   if (req.body.category) {
     try {
       const catID = await Category.findOne({
