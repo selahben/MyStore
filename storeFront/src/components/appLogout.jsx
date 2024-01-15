@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useStoreContext } from "../context/store.context";
-import { toast } from "react-toastify";
 
 const events = [
   "load",
